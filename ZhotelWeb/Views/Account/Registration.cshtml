@@ -1,0 +1,65 @@
+﻿@using ZHotelWeb.Models.DTOs;
+@model UserCustRegistration;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="/css/styleRegiser.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+            <form asp-action="Registration" method="post">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">First Name</span>
+                        <input type="text" asp-for="@Model.FirstName" placeholder="Enter your first name" required>
+                        <span asp-validation-for="@Model.FirstName"></span>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Last Name</span>
+                        <input type="text" asp-for="@Model.LastName" placeholder="Enter your last name" required>
+                        <span asp-validation-for="@Model.LastName"></span>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Username</span>
+                        <input type="text" asp-for="@Model.UserName" placeholder="Enter your username" required>
+                        <span asp-validation-for="@Model.UserName"></span>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="text" asp-for="@Model.Email" placeholder="Enter your email" required>
+                        <span asp-validation-for="@Model.Email"></span>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input type="text" asp-for="@Model.Phone" placeholder="Enter your number" required>
+                        <span asp-validation-for="@Model.Phone"></span>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input asp-for="@Model.Password" placeholder="Enter your password" required>
+                        <span asp-validation-for="@Model.Password"></span>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Confirm Password</span>
+                        <input asp-for="@Model.PasswordConfirmed" placeholder="Confirm your password" required>
+                        <span asp-validation-for="@Model.PasswordConfirmed"></span>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

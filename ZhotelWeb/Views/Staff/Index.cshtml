@@ -1,0 +1,68 @@
+﻿@model List<Staff>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div class="content">
+
+    <div class="container">
+        <div class="table-responsive custom-table-responsive">
+            <h1></h1>
+            <a asp-action="Add" asp-controller="Staff" class="btn btn-success">New Staff</a>
+        </div>
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Adress</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Job Name</th>
+                        <th scope="col">Detials</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr scope="row">
+                            <td><img src="/img/Staff/@item.ImageUrl" style="width:50px"></img></td>
+                            <td>@item.Id</td>
+                            <td><a href="#">@item.FirstName</a></td>
+                            <td><a href="#">@item.LastName</a></td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>@item.Phone</td>
+                            <td>@item.Address</td>
+                            <td>@item.Salary</td>
+                            <td>@item.JobName</td>
+                            <td><a asp-action="Details" asp-controller="Staff" asp-route-id="@item.Id" class="btn btn-info">Detials</a></td>
+                            <td><a asp-action="Edit" asp-controller="Staff" asp-route-id="@item.Id" class="btn btn-primary">Edit</a></td>
+                            <td><a asp-action="Delete" asp-controller="Staff" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+@section Scripts {
+    <script src="/Table/js/popper.min.js"></script>
+    <script src="/Table/js/main.js"></script>
+}
+

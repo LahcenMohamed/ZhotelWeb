@@ -1,0 +1,57 @@
+﻿@model List<Review>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div class="content">
+
+    <div class="container">
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Room Photo</th>
+                        <th scope="col">Review Id</th>
+                        <th scope="col">Room Id</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Customer Id</th>
+                        <th scope="col">CustomerName</th>
+                        <th scope="col">Assessment</th>
+                        <th scope="col">Discrition</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr scope="row">
+                            <td><img src="/img/Room/@item.Room.ImageUrl" style="width:65px"></img></td>
+                            <td>@item.Id</td>
+                            <td>@item.Room.Id</td>
+                            <td>@item.Room.Type.ToString()</td>
+                            <td>
+                                @item.Customer.LastName @item.Customer.FirstName
+                            </td>
+                            <td>@item.Customer.Email</td>
+                            <td>@item.assessment</td>
+                            <td>@item.Discrition</td>
+                            <td><a asp-action="Delete" asp-controller="Review" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+@section Scripts {
+    <script src="/Table/js/popper.min.js"></script>
+    <script src="/Table/js/main.js"></script>
+}

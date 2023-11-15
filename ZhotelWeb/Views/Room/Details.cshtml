@@ -1,0 +1,103 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Room
+@{
+}
+@* <div class="card" style="width:250px">
+    <img class="card-img-top" src="/img/Room/@Model.ImageUrl" alt="Card image">
+    <div class="card-body">
+        <h4 class="card-title">
+        @for(int i = 1;i<=(int)Model.AvgAssessment;i++)
+        {
+            <span class="fa fa-star checked"></span>
+        }</h4>
+        <h5>Type</h5>
+        <p class="card-text">@Model.Type.ToString() </p>
+        <h5>Count of Bed</h5>
+        <p class="card-text">@Model.BedCount </p>
+        <h5>Price</h5>
+        <p class="card-text">@Model.Price </p>
+        <h5>Is Avilable</h5>
+        @Html.DisplayFor(modelItem => Model.IsAvailabel)
+    </div>
+    
+</div> *@
+<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="room-item shadow rounded overflow-hidden">
+        <div class="position-relative">
+            <img class="img-fluid" src="/img/Room/@Model.ImageUrl" alt="">
+            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$@Model.Price/Night</small>
+        </div>
+        <div class="p-4 mt-2">
+            <div class="d-flex justify-content-between mb-3">
+                <h5 class="mb-0">@Model.Type.ToString()</h5>
+                <div class="ps-2">
+                    @for (int i = 1; i <= (int)Model.AvgAssessment; i++)
+                    {
+                        <small class="fa fa-star text-primary"></small>
+                    }
+                </div>
+            </div>
+            <div class="d-flex mb-3">
+                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>@Model.BedCount Bed</small>
+                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+            </div>
+            <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-sm btn-primary rounded py-2 px-4" asp-action="Edit" asp-controller="Room" asp-route-id="@Model.Id" >Edit</a>
+                <a class="btn btn-sm btn-dark rounded py-2 px-4" asp-action="Index">back to list</a>
+            </div>
+        </div>
+    </div>
+</div>
+<h3>Reservations</h3>
+<div class="table-responsive custom-table-responsive">
+
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date of arrival</th>
+                <th scope="col">Date of departure</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reservations)
+            {
+                <tr scope="row">
+                    <td>@item.Id</td>
+                    <td>@item.DateOfArrival</td>
+                    <td>@item.DateOfDeparture</td>
+                    @* <td>
+                @item.Room
+                </td> *@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<h3>Reviews</h3>
+<div class="table-responsive custom-table-responsive">
+
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Assessment</th>
+                <th scope="col">Discrition</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reviews)
+            {
+                <tr scope="row">
+                    <td>@item.Id</td>
+                    <td>@item.assessment</td>
+                    <td><p class="card-text">@item.Discrition</p></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

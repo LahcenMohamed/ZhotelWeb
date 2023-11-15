@@ -1,0 +1,50 @@
+﻿@model List<Service>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div class="content">
+
+    <div class="container">
+        <div class="table-responsive custom-table-responsive">
+            <h1></h1>
+            <a asp-action="Add" asp-controller="Service" class="btn btn-success">New Service</a>
+        </div>
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr scope="row">
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td><a asp-action="Edit" asp-controller="Service" asp-route-id="@item.Id" class="btn btn-primary">Edit</a></td>
+                            <td><a asp-action="Delete" asp-controller="Service" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+@section Scripts {
+    <script src="/Table/js/popper.min.js"></script>
+    <script src="/Table/js/main.js"></script>
+}
+

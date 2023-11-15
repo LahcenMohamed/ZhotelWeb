@@ -1,0 +1,64 @@
+﻿@model List<Room>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div class="content">
+
+    <div class="container">
+        <div class="table-responsive custom-table-responsive">
+            <h1></h1>
+            <a asp-action="Add" asp-controller="Room" class="btn btn-success">New Room</a>
+        </div>
+        <div class="table-responsive custom-table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Bed Count</th>
+                        <th scope="col">Avg Assessment</th>
+                        <th scope="col">Adress</th>
+                        <th scope="col">Detials</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr scope="row">
+                            <td><img src="/img/Room/@item.ImageUrl" style="width:65px"></img></td>
+                            <td>@item.Id</td>
+                            <td>@item.Type.ToString()</td>
+                            <td>@item.Price</td>
+                            <td>
+                                @item.BedCount
+                            </td>
+                            <td>@item.AvgAssessment</td>
+                            <td>@Html.DisplayFor(modelItem => item.IsAvailabel)</td>
+                            <td><a asp-action="Details" asp-controller="Room" asp-route-id="@item.Id" class="btn btn-info">Detials</a></td>
+                            <td><a asp-action="Edit" asp-controller="Room" asp-route-id="@item.Id" class="btn btn-primary">Edit</a></td>
+                            <td><a asp-action="Delete" asp-controller="Room" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+@section Scripts {
+    <script src="/Table/js/popper.min.js"></script>
+    <script src="/Table/js/main.js"></script>
+}
+

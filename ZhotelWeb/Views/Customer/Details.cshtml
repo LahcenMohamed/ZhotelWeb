@@ -1,0 +1,71 @@
+﻿@model ZHotelWeb.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="m-0 text-primary text-uppercase">Details</h1>
+
+<div>
+  <div class="card" style="width:400px">
+    <div class="card-body">
+      <h4 class="card-title">@Model.FirstName @Model.LastName</h4>
+      <p class="card-text">@Model.Email</p>
+      <p class="card-text">@Model.Phone</p>
+        </div>
+  </div>
+</div>
+<h3>Reservations</h3>
+<div class="table-responsive custom-table-responsive">
+
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date of arrival</th>
+                <th scope="col">Date of departure</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reservations)
+            {
+                <tr scope="row">
+                    <td>@item.Id</td>
+                    <td>@item.DateOfArrival</td>
+                    <td>@item.DateOfDeparture</td>
+                    @* <td>
+                        @item.Room
+                    </td> *@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<h3>Reviews</h3>
+<div class="table-responsive custom-table-responsive">
+
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date of arrival</th>
+                <th scope="col">Date of departure</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Reviews)
+            {
+                <tr scope="row">
+                    <td>@item.Id</td>
+                    <td>@item.assessment</td>
+                    <td><p class="card-text">@item.Discrition</p></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-controller="Customer" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
+    <a asp-action="Delete" asp-controller="Customer" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a> |
+    <a asp-action="Index" class="btn btn-light">Back to List</a>
+</div>
